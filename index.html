@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle Prime - Esports Tournament Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="app-logo">⚡ Battle Prime</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn notification-btn" onclick="navigateTo('notifications')">
+                        🔔
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Home Screen -->
+            <section id="home-screen" class="screen active">
+                <div class="screen-content">
+                    <!-- Welcome Banner -->
+                    <div class="welcome-banner">
+                        <div class="banner-content">
+                            <h2>Welcome Back, Champion!</h2>
+                            <p>Your rank: <span class="rank-badge">Elite #42</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-info">
+                                <p class="stat-label">Tournaments</p>
+                                <p class="stat-value">12</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-info">
+                                <p class="stat-label">Points</p>
+                                <p class="stat-value">8,250</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-info">
+                                <p class="stat-label">Win Rate</p>
+                                <p class="stat-value">68%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Tournaments Section -->
+                    <div class="section">
+                        <h3 class="section-title">Active Tournaments</h3>
+                        <div class="tournament-card" onclick="navigateTo('tournament-details')">
+                            <div class="tournament-header">
+                                <div class="tournament-badge">LIVE</div>
+                                <span class="tournament-prize">500 Points</span>
+                            </div>
+                            <div class="tournament-image-placeholder"></div>
+                            <div class="tournament-info">
+                                <h4>Valorant Championship</h4>
+                                <p class="tournament-players">👥 1,240 Players</p>
+                                <p class="tournament-time">⏱️ Starts in 2h 15m</p>
+                                <button class="btn btn-primary btn-small">Join Now</button>
+                            </div>
+                        </div>
+
+                        <div class="tournament-card" onclick="navigateTo('tournament-details')">
+                            <div class="tournament-header">
+                                <div class="tournament-badge upcoming">UPCOMING</div>
+                                <span class="tournament-prize">300 Points</span>
+                            </div>
+                            <div class="tournament-image-placeholder"></div>
+                            <div class="tournament-info">
+                                <h4>CS:GO Pro League</h4>
+                                <p class="tournament-players">👥 856 Players</p>
+                                <p class="tournament-time">⏱️ Starts in 1d 5h</p>
+                                <button class="btn btn-secondary btn-small">Set Reminder</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Matches -->
+                    <div class="section">
+                        <h3 class="section-title">Your Next Match</h3>
+                        <div class="match-card">
+                            <div class="match-status">Next in 45m</div>
+                            <div class="match-teams">
+                                <div class="team team-left">
+                                    <div class="team-avatar">👤</div>
+                                    <p class="team-name">Your Team</p>
+                                </div>
+                                <div class="match-vs">VS</div>
+                                <div class="team team-right">
+                                    <div class="team-avatar">👥</div>
+                                    <p class="team-name">Elite Squad</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">View Match</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tournaments Screen -->
+            <section id="tournaments-screen" class="screen">
+                <div class="screen-content">
+                    <h2 class="screen-title">Tournaments</h2>
+
+                    <!-- Filter Tabs -->
+                    <div class="filter-tabs">
+                        <button class="tab-btn active" onclick="filterTournaments('all')">All</button>
+                        <button class="tab-btn" onclick="filterTournaments('active')">Active</button>
+                        <button class="tab-btn" onclick="filterTournaments('joined')">Joined</button>
+                        <button class="tab-btn" onclick="filterTournaments('upcoming')">Upcoming</button>
+                    </div>
+
+                    <!-- Tournaments List -->
+                    <div class="tournaments-list">
+                        <div class="tournament-card" onclick="navigateTo('tournament-details')">
+                            <div class="tournament-header">
+                                <div class="tournament-badge">LIVE</div>
+                                <span class="tournament-prize">500 Points</span>
+                            </div>
+                            <div class="tournament-image-placeholder"></div>
+                            <div class="tournament-info">
+                                <h4>Valorant Championship</h4>
+                                <p class="tournament-game">Valorant</p>
+                                <p class="tournament-players">👥 1,240 / 2,000 Players</p>
+                                <p class="tournament-time">⏱️ Ends in 6h 30m</p>
+                                <div class="tournament-footer">
+                                    <span class="entry-fee">Free Entry</span>
+                                    <button class="btn btn-primary btn-small">Join</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tournament-card" onclick="navigateTo('tournament-details')">
+                            <div class="tournament-header">
+                                <div class="tournament-badge">LIVE</div>
+                                <span class="tournament-prize">300 Points</span>
+                            </div>
+                            <div class="tournament-image-placeholder"></div>
+                            <div class="tournament-info">
+                                <h4>CS:GO Pro League</h4>
+                                <p class="tournament-game">Counter-Strike 2</p>
+                                <p class="tournament-players">👥 856 / 1,500 Players</p>
+                                <p class="tournament-time">⏱️ Ends in 3h 45m</p>
+                                <div class="tournament-footer">
+                                    <span class="entry-fee">Free Entry</span>
+                                    <button class="btn btn-primary btn-small">Join</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tournament-card" onclick="navigateTo('tournament-details')">
+                            <div class="tournament-header">
+                                <div class="tournament-badge upcoming">UPCOMING</div>
+                                <span class="tournament-prize">1,000 Points</span>
+                            </div>
+                            <div class="tournament-image-placeholder"></div>
+                            <div class="tournament-info">
+                                <h4>Dota 2 World Series</h4>
+                                <p class="tournament-game">Dota 2</p>
+                                <p class="tournament-players">👥 420 / 1,000 Players</p>
+                                <p class="tournament-time">⏱️ Starts in 1d 5h</p>
+                                <div class="tournament-footer">
+                                    <span class="entry-fee">Free Entry</span>
+                                    <button class="btn btn-secondary btn-small">Set Reminder</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tournament-card" onclick="navigateTo('tournament-details')">
+                            <div class="tournament-header">
+                                <div class="tournament-badge upcoming">UPCOMING</div>
+                                <span class="tournament-prize">250 Points</span>
+                            </div>
+                            <div class="tournament-image-placeholder"></div>
+                            <div class="tournament-info">
+                                <h4>League of Legends Clash</h4>
+                                <p class="tournament-game">League of Legends</p>
+                                <p class="tournament-players">👥 2,150 / 4,000 Players</p>
+                                <p class="tournament-time">⏱️ Starts in 2d 3h</p>
+                                <div class="tournament-footer">
+                                    <span class="entry-fee">Free Entry</span>
+                                    <button class="btn btn-secondary btn-small">Set Reminder</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tournament-card" onclick="navigateTo('tournament-details')">
+                            <div class="tournament-header">
+                                <div class="tournament-badge">LIVE</div>
+                                <span class="tournament-prize">400 Points</span>
+                            </div>
+                            <div class="tournament-image-placeholder"></div>
+                            <div class="tournament-info">
+                                <h4>Apex Legends Invitational</h4>
+                                <p class="tournament-game">Apex Legends</p>
+                                <p class="tournament-players">👥 1,980 / 2,500 Players</p>
+                                <p class="tournament-time">⏱️ Ends in 8h 15m</p>
+                                <div class="tournament-footer">
+                                    <span class="entry-fee">Free Entry</span>
+                                    <button class="btn btn-primary btn-small">Join</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tournament-card" onclick="navigateTo('tournament-details')">
+                            <div class="tournament-header">
+                                <div class="tournament-badge upcoming">UPCOMING</div>
+                                <span class="tournament-prize">600 Points</span>
+                            </div>
+                            <div class="tournament-image-placeholder"></div>
+                            <div class="tournament-info">
+                                <h4>Overwatch 2 Masters</h4>
+                                <p class="tournament-game">Overwatch 2</p>
+                                <p class="tournament-players">👥 645 / 1,200 Players</p>
+                                <p class="tournament-time">⏱️ Starts in 3d 12h</p>
+                                <div class="tournament-footer">
+                                    <span class="entry-fee">Free Entry</span>
+                                    <button class="btn btn-secondary btn-small">Set Reminder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tournament Details Screen -->
+            <section id="tournament-details-screen" class="screen">
+                <div class="screen-content">
+                    <button class="back-btn" onclick="navigateTo('tournaments')">← Back</button>
+
+                    <div class="tournament-detail-header">
+                        <div class="tournament-image-placeholder-large"></div>
+                        <div class="tournament-detail-info">
+                            <h2>Valorant Championship</h2>
+                            <p class="tournament-status">🔴 LIVE</p>
+                            <div class="detail-stats">
+                                <div class="detail-stat">
+                                    <span class="detail-label">Prize Pool</span>
+                                    <span class="detail-value">500 Points</span>
+                                </div>
+                                <div class="detail-stat">
+                                    <span class="detail-label">Players</span>
+                                    <span class="detail-value">1,240</span>
+                                </div>
+                                <div class="detail-stat">
+                                    <span class="detail-label">Format</span>
+                                    <span class="detail-value">Double Elim</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Tabs -->
+                    <div class="detail-tabs">
+                        <button class="detail-tab active" onclick="switchDetailTab('overview')">Overview</button>
+                        <button class="detail-tab" onclick="switchDetailTab('bracket')">Bracket</button>
+                        <button class="detail-tab" onclick="switchDetailTab('prizes')">Prizes</button>
+                        <button class="detail-tab" onclick="switchDetailTab('rules')">Rules</button>
+                    </div>
+
+                    <!-- Overview Tab -->
+                    <div id="overview-tab" class="detail-tab-content active">
+                        <div class="section">
+                            <h3 class="section-title">About Tournament</h3>
+                            <p class="tournament-description">
+                                Join the ultimate Valorant Championship where the best teams compete for glory and virtual points. 
+                                This is a free-entry tournament open to all skill levels. Win matches to earn points and climb the leaderboard.
+                            </p>
+                        </div>
+
+                        <div class="section">
+                            <h3 class="section-title">Tournament Details</h3>
+                            <div class="detail-item">
+                                <span class="detail-key">Game:</span>
+                                <span class="detail-value">Valorant</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-key">Entry Fee:</span>
+                                <span class="detail-value">Free</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-key">Team Size:</span>
+                                <span class="detail-value">5v5</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-key">Format:</span>
+                                <span class="detail-value">Double Elimination</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-key">Check-in Time:</span>
+                                <span class="detail-value">30 mins before match</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-key">Status:</span>
+                                <span class="detail-value">🟢 Active • Ends in 6h 30m</span>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <button class="btn btn-primary btn-large">Join Tournament</button>
+                            <button class="btn btn-secondary btn-large">Set Reminder</button>
+                        </div>
+                    </div>
+
+                    <!-- Bracket Tab -->
+                    <div id="bracket-tab" class="detail-tab-content">
+                        <div class="section">
+                            <h3 class="section-title">Tournament Bracket</h3>
+                            <div class="bracket-placeholder">
+                                <p>Bracket visualization coming soon...</p>
+                            </div>
+                            <div class="upcoming-matches">
+                                <h4>Upcoming Matches</h4>
+                                <div class="match-item">
+                                    <div class="match-time">Today 3:30 PM</div>
+                                    <div class="match-teams-inline">
+                                        <span>Team Alpha</span>
+                                        <span class="match-vs">vs</span>
+                                        <span>Team Bravo</span>
+                                    </div>
+                                </div>
+                                <div class="match-item">
+                                    <div class="match-time">Today 4:00 PM</div>
+                                    <div class="match-teams-inline">
+                                        <span>Team Charlie</span>
+                                        <span class="match-vs">vs</span>
+                                        <span>Team Delta</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prizes Tab -->
+                    <div id="prizes-tab" class="detail-tab-content">
+                        <div class="section">
+                            <h3 class="section-title">Prize Distribution</h3>
+                            <div class="prize-tier">
+                                <div class="prize-rank">🥇 1st Place</div>
+                                <div class="prize-amount">250 Points</div>
+                            </div>
+                            <div class="prize-tier">
+                                <div class="prize-rank">🥈 2nd Place</div>
+                                <div class="prize-amount">150 Points</div>
+                            </div>
+                            <div class="prize-tier">
+                                <div class="prize-rank">🥉 3rd Place</div>
+                                <div class="prize-amount">100 Points</div>
+                            </div>
+                            <div class="prize-tier">
+                                <div class="prize-rank">4th - 8th Place</div>
+                                <div class="prize-amount">50 Points</div>
+                            </div>
+                            <div class="prize-tier">
+                                <div class="prize-rank">Participation Bonus</div>
+                                <div class="prize-amount">10 Points</div>
+                            </div>
+                            <p class="prize-note">Virtual points are used for ranking and leaderboard positions only.</p>
+                        </div>
+                    </div>
+
+                    <!-- Rules Tab -->
+                    <div id="rules-tab" class="detail-tab-content">
+                        <div class="section">
+                            <h3 class="section-title">Tournament Rules</h3>
+                            <ol class="rules-list">
+                                <li>All players must be 18+ years old or have parental consent</li>
+                                <li>No cheating, hacking, or use of unauthorized software allowed</li>
+                                <li>Fair play policy strictly enforced</li>
+                                <li>Respect all opponents and tournament officials</li>
+                                <li>Match check-in required 30 minutes before scheduled time</li>
+                                <li>Disconnection rules: Auto-loss after 5 minutes</li>
+                                <li>Points are virtual currency for leaderboard rankings only</li>
+                                <li>No refunds for participation</li>
+                                <li>Tournament organizers reserve the right to disqualify players</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Matches Screen -->
+            <section id="matches-screen" class="screen">
+                <div class="screen-content">
+                    <h2 class="screen-title">My Matches</h2>
+
+                    <!-- Match Filter Tabs -->
+                    <div class="filter-tabs">
+                        <button class="tab-btn active" onclick="filterMatches('upcoming')">Upcoming</button>
+                        <button class="tab-btn" onclick="filterMatches('live')">Live</button>
+                        <button class="tab-btn" onclick="filterMatches('completed')">Completed</button>
+                    </div>
+
+                    <!-- Upcoming Matches -->
+                    <div class="matches-list">
+                        <div class="match-card-full">
+                            <div class="match-status-badge">Upcoming - 45 mins</div>
+                            <div class="match-tournament">Valorant Championship</div>
+                            <div class="match-content">
+                                <div class="match-team-section">
+                                    <div class="team-logo">👤</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Your Team</p>
+                                        <p class="team-players">5 Players</p>
+                                    </div>
+                                </div>
+                                <div class="match-divider">VS</div>
+                                <div class="match-team-section">
+                                    <div class="team-logo">👥</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Elite Squad</p>
+                                        <p class="team-players">5 Players</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="match-actions">
+                                <button class="btn btn-primary btn-small">Join Lobby</button>
+                                <button class="btn btn-secondary btn-small">Reschedule</button>
+                            </div>
+                        </div>
+
+                        <div class="match-card-full">
+                            <div class="match-status-badge">Upcoming - 2h 30m</div>
+                            <div class="match-tournament">CS:GO Pro League</div>
+                            <div class="match-content">
+                                <div class="match-team-section">
+                                    <div class="team-logo">👤</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Your Team</p>
+                                        <p class="team-players">5 Players</p>
+                                    </div>
+                                </div>
+                                <div class="match-divider">VS</div>
+                                <div class="match-team-section">
+                                    <div class="team-logo">👥</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Pro Gamers</p>
+                                        <p class="team-players">5 Players</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="match-actions">
+                                <button class="btn btn-primary btn-small">Join Lobby</button>
+                                <button class="btn btn-secondary btn-small">Reschedule</button>
+                            </div>
+                        </div>
+
+                        <div class="match-card-full">
+                            <div class="match-status-badge">🔴 LIVE - In Progress</div>
+                            <div class="match-tournament">Apex Legends Invitational</div>
+                            <div class="match-content">
+                                <div class="match-team-section">
+                                    <div class="team-logo">👤</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Your Team</p>
+                                        <p class="team-score">2</p>
+                                    </div>
+                                </div>
+                                <div class="match-divider">VS</div>
+                                <div class="match-team-section">
+                                    <div class="team-logo">👥</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Legends United</p>
+                                        <p class="team-score">1</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="match-actions">
+                                <button class="btn btn-primary btn-small">Watch Live</button>
+                            </div>
+                        </div>
+
+                        <div class="match-card-full">
+                            <div class="match-status-badge completed">Completed</div>
+                            <div class="match-tournament">Valorant Championship - Round 2</div>
+                            <div class="match-content">
+                                <div class="match-team-section">
+                                    <div class="team-logo">👤</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Your Team</p>
+                                        <p class="team-score">2</p>
+                                    </div>
+                                </div>
+                                <div class="match-divider">VS</div>
+                                <div class="match-team-section">
+                                    <div class="team-logo">👥</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Shadow Team</p>
+                                        <p class="team-score">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="match-result">✅ WIN • +75 Points</div>
+                            <div class="match-actions">
+                                <button class="btn btn-secondary btn-small">View Replay</button>
+                            </div>
+                        </div>
+
+                        <div class="match-card-full">
+                            <div class="match-status-badge completed">Completed</div>
+                            <div class="match-tournament">CS:GO Pro League - Round 1</div>
+                            <div class="match-content">
+                                <div class="match-team-section">
+                                    <div class="team-logo">👤</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Your Team</p>
+                                        <p class="team-score">1</p>
+                                    </div>
+                                </div>
+                                <div class="match-divider">VS</div>
+                                <div class="match-team-section">
+                                    <div class="team-logo">👥</div>
+                                    <div class="team-details">
+                                        <p class="team-name">Pro Gamers</p>
+                                        <p class="team-score">2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="match-result">❌ LOSS • +25 Points</div>
+                            <div class="match-actions">
+                                <button class="btn btn-secondary btn-small">View Replay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Screen -->
+            <section id="leaderboard-screen" class="screen">
+                <div class="screen-content">
+                    <h2 class="screen-title">Leaderboard</h2>
+
+                    <!-- Leaderboard Tabs -->
+                    <div class="filter-tabs">
+                        <button class="tab-btn active" onclick="switchLeaderboard('global')">Global</button>
+                        <button class="tab-btn" onclick="switchLeaderboard('monthly')">Monthly</button>
+                        <button class="tab-btn" onclick="switchLeaderboard('friends')">Friends</button>
+                    </div>
+
+                    <!-- Player Rank Info -->
+                    <div class="my-rank-card">
+                        <h3>Your Ranking</h3>
+                        <div class="rank-info">
+                            <div class="rank-circle">42</div>
+                            <div class="rank-details">
+                                <p class="rank-title">Elite Player</p>
+                                <p class="rank-points">8,250 Points</p>
+                                <p class="rank-progress">Top 1.2% of all players</p>
+                            </div>
+                        </div>
+                        <div class="rank-progress-bar">
+                            <div class="rank-progress-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Global Leaderboard List -->
+                    <div id="global-leaderboard" class="leaderboard-list active">
+                        <div class="leaderboard-header">
+                            <span class="rank-col">Rank</span>
+                            <span class="player-col">Player</span>
+                            <span class="points-col">Points</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-1">
+                            <span class="rank-badge">🥇 1</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">ShadowMaster</p>
+                                    <p class="player-title">Legendary</p>
+                                </div>
+                            </div>
+                            <span class="player-points">15,820</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-2">
+                            <span class="rank-badge">🥈 2</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">PhantomGamer</p>
+                                    <p class="player-title">Legendary</p>
+                                </div>
+                            </div>
+                            <span class="player-points">14,560</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-3">
+                            <span class="rank-badge">🥉 3</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">IcebreakPro</p>
+                                    <p class="player-title">Elite</p>
+                                </div>
+                            </div>
+                            <span class="player-points">13,425</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-4">
+                            <span class="rank-badge">4</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">NeonStrike</p>
+                                    <p class="player-title">Elite</p>
+                                </div>
+                            </div>
+                            <span class="player-points">12,890</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-5">
+                            <span class="rank-badge">5</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">CrimsonBlade</p>
+                                    <p class="player-title">Elite</p>
+                                </div>
+                            </div>
+                            <span class="player-points">11,650</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-42 highlight">
+                            <span class="rank-badge">42</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">You (Champion)</p>
+                                    <p class="player-title">Elite</p>
+                                </div>
+                            </div>
+                            <span class="player-points">8,250</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-43">
+                            <span class="rank-badge">43</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">VoidWalker</p>
+                                    <p class="player-title">Pro</p>
+                                </div>
+                            </div>
+                            <span class="player-points">8,120</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-44">
+                            <span class="rank-badge">44</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">TitanForce</p>
+                                    <p class="player-title">Pro</p>
+                                </div>
+                            </div>
+                            <span class="player-points">7,980</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-45">
+                            <span class="rank-badge">45</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">EchoKnight</p>
+                                    <p class="player-title">Pro</p>
+                                </div>
+                            </div>
+                            <span class="player-points">7,850</span>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank-badge">46</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">FrostByte</p>
+                                    <p class="player-title">Pro</p>
+                                </div>
+                            </div>
+                            <span class="player-points">7,620</span>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank-badge">47</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">ThunderStrike</p>
+                                    <p class="player-title">Expert</p>
+                                </div>
+                            </div>
+                            <span class="player-points">7,450</span>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Leaderboard -->
+                    <div id="monthly-leaderboard" class="leaderboard-list">
+                        <div class="leaderboard-header">
+                            <span class="rank-col">Rank</span>
+                            <span class="player-col">Player</span>
+                            <span class="points-col">Pts (Sept)</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-1">
+                            <span class="rank-badge">🥇 1</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">NeonStrike</p>
+                                    <p class="player-title">Elite</p>
+                                </div>
+                            </div>
+                            <span class="player-points">3,200</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-2">
+                            <span class="rank-badge">🥈 2</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">PhantomGamer</p>
+                                    <p class="player-title">Legendary</p>
+                                </div>
+                            </div>
+                            <span class="player-points">2,950</span>
+                        </div>
+
+                        <div class="leaderboard-item rank-3">
+                            <span class="rank-badge">🥉 3</span>
+                            <div class="player-info">
+                                <div class="player-avatar">👤</div>
+                                <div class="player-details">
+                                    <p class="player-name">Champion</p>
+                                    <p class="player-title">Elite</p>
+                                </div>
+                            </div>
+                            <span class="player-points">2,700</span>
+                        </div>
+                    </div>
+
+                    <!-- Friends Leaderboard -->
+                    <div id="friends-leaderboard" class="leaderboard-list">
+                        <p class="empty-state">You don't have any friends added yet. Start adding friends to see their rankings here!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Screen -->
+            <section id="profile-screen" class="screen">
+                <div class="screen-content">
+                    <h2 class="screen-title">Profile</h2>
+
+                    <!-- Profile Header -->
+                    <div class="profile-header">
+                        <div class="profile-avatar-large">👤</div>
+                        <div class="profile-basic">
+                            <h3>Champion</h3>
+                            <p class="profile-tag">Elite Player</p>
+                            <p class="profile-id">@champion_player</p>
+                        </div>
+                    </div>
+
+                    <!-- Profile Stats -->
+                    <div class="profile-stats-grid">
+                        <div class="profile-stat">
+                            <p class="stat-label">Rank</p>
+                            <p class="stat-value">42nd</p>
+                        </div>
+                        <div class="profile-stat">
+                            <p class="stat-label">Points</p>
+                            <p class="stat-value">8,250</p>
+                        </div>
+                        <div class="profile-stat">
+                            <p class="stat-label">Matches</p>
+                            <p class="stat-value">156</p>
+                        </div>
+                        <div class="profile-stat">
+                            <p class="stat-label">Win Rate</p>
+                            <p class="stat-value">68%</p>
+                        </div>
+                    </div>
+
+                    <!-- Profile Sections -->
+                    <div class="section">
+                        <h3 class="section-title">Bio</h3>
+                        <p class="profile-bio">Competitive Valorant and CS:GO player. Always pushing limits and competing at the highest level. Join my tournaments!</p>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Gaming Profile</h3>
+                        <div class="profile-field">
+                            <label>Main Games</label>
+                            <p>Valorant, CS:GO, Apex Legends</p>
+                        </div>
+                        <div class="profile-field">
+                            <label>Region</label>
+                            <p>North America (NA)</p>
+                        </div>
+                        <div class="profile-field">
+                            <label>Playstyle</label>
+                            <p>Competitive, Aggressive</p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Achievements</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement">
+                                <div class="achievement-icon">🏆</div>
+                                <p>Tournament Winner</p>
+                            </div>
+                            <div class="achievement">
+                                <div class="achievement-icon">⭐</div>
+                                <p>Elite Rank</p>
+                            </div>
+                            <div class="achievement">
+                                <div class="achievement-icon">🎯</div>
+                                <p>Perfect Match</p>
+                            </div>
+                            <div class="achievement">
+                                <div class="achievement-icon">🔥</div>
+                                <p>Win Streak x10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3 class="section-title">Account Settings</h3>
+                        <button class="btn btn-secondary btn-large">Edit Profile</button>
+                        <button class="btn btn-secondary btn-large">Change Password</button>
+                        <button class="btn btn-secondary btn-large">Privacy Settings</button>
+                        <button class="btn btn-danger btn-large">Logout</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications Screen -->
+            <section id="notifications-screen" class="screen">
+                <div class="screen-content">
+                    <h2 class="screen-title">Notifications</h2>
+
+                    <!-- Notification Filter -->
+                    <div class="filter-tabs">
+                        <button class="tab-btn active" onclick="filterNotifications('all')">All</button>
+                        <button class="tab-btn" onclick="filterNotifications('matches')">Matches</button>
+                        <button class="tab-btn" onclick="filterNotifications('tournaments')">Tournaments</button>
+                        <button class="tab-btn" onclick="filterNotifications('system')">System</button>
+                    </div>
+
+                    <!-- Notifications List -->
+                    <div class="notifications-list">
+                        <div class="notification-item unread">
+                            <div class="notification-icon">🎮</div>
+                            <div class="notification-content">
+                                <h4>Your match starts in 30 minutes!</h4>
+                                <p>Valorant Championship - Semifinals</p>
+                                <p class="notification-time">2 minutes ago</p>
+                            </div>
+                            <button class="notification-action" onclick="markAsRead()">×</button>
+                        </div>
+
+                        <div class="notification-item unread">
+                            <div class="notification-icon">🏆</div>
+                            <div class="notification-content">
+                                <h4>Match Result: Victory!</h4>
+                                <p>You won against Team Shadow • +75 Points</p>
+                                <p class="notification-time">1 hour ago</p>
+                            </div>
+                            <button class="notification-action" onclick="markAsRead()">×</button>
+                        </div>
+
+                        <div class="notification-item unread">
+                            <div class="notification-icon">📢</div>
+                            <div class="notification-content">
+                                <h4>New Tournament Available</h4>
+                                <p>Dota 2 World Series is now open for registration</p>
+                                <p class="notification-time">3 hours ago</p>
+                            </div>
+                            <button class="notification-action" onclick="markAsRead()">×</button>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">📊</div>
+                            <div class="notification-content">
+                                <h4>Leaderboard Update</h4>
+                                <p>You've moved up to rank #42 (↑ 5 positions)</p>
+                                <p class="notification-time">1 day ago</p>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">💎</div>
+                            <div class="notification-content">
+                                <h4>Seasonal Rewards Available</h4>
+                                <p>Claim your monthly tournament rewards</p>
+                                <p class="notification-time">2 days ago</p>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">⚙️</div>
+                            <div class="notification-content">
+                                <h4>Account Verified</h4>
+                                <p>Your gaming profile has been successfully verified</p>
+                                <p class="notification-time">3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu Screen -->
+            <section id="menu-screen" class="screen">
+                <div class="screen-content">
+                    <h2 class="screen-title">Menu</h2>
+
+                    <!-- User Info in Menu -->
+                    <div class="menu-user-info">
+                        <div class="menu-user-avatar">👤</div>
+                        <h3>Champion</h3>
+                        <p>Elite Player • Rank #42</p>
+                    </div>
+
+                    <!-- Menu Navigation -->
+                    <div class="menu-items">
+                        <button class="menu-item" onclick="navigateTo('home')">
+                            <span class="menu-icon">🏠</span>
+                            <span>Home</span>
+                        </button>
+                        <button class="menu-item" onclick="navigateTo('tournaments')">
+                            <span class="menu-icon">🏆</span>
+                            <span>Tournaments</span>
+                        </button>
+                        <button class="menu-item" onclick="navigateTo('matches')">
+                            <span class="menu-icon">🎮</span>
+                            <span>My Matches</span>
+                        </button>
+                        <button class="menu-item" onclick="navigateTo('leaderboard')">
+                            <span class="menu-icon">📊</span>
+                            <span>Leaderboard</span>
+                        </button>
+                        <button class="menu-item" onclick="navigateTo('profile')">
+                            <span class="menu-icon">👤</span>
+                            <span>Profile</span>
+                        </button>
+                        <button class="menu-item" onclick="navigateTo('notifications')">
+                            <span class="menu-icon">🔔</span>
+                            <span>Notifications</span>
+                        </button>
+                    </div>
+
+                    <!-- Menu Settings Section -->
+                    <div class="menu-section">
+                        <h4 class="menu-section-title">Settings</h4>
+                        <button class="menu-item" onclick="openSettings('account')">
+                            <span class="menu-icon">⚙️</span>
+                            <span>Account Settings</span>
+                        </button>
+                        <button class="menu-item" onclick="openSettings('notifications')">
+                            <span class="menu-icon">🔕</span>
+                            <span>Notification Preferences</span>
+                        </button>
+                        <button class="menu-item" onclick="openSettings('privacy')">
+                            <span class="menu-icon">🔒</span>
+                            <span>Privacy & Security</span>
+                        </button>
+                        <button class="menu-item" onclick="openSettings('help')">
+                            <span class="menu-icon">❓</span>
+                            <span>Help & Support</span>
+                        </button>
+                    </div>
+
+                    <!-- Menu Footer Section -->
+                    <div class="menu-section">
+                        <h4 class="menu-section-title">App Info</h4>
+                        <div class="menu-info-item">
+                            <span>Version</span>
+                            <span>1.0.0</span>
+                        </div>
+                        <div class="menu-info-item">
+                            <span>Last Updated</span>
+                            <span>Sept 2024</span>
+                        </div>
+                    </div>
+
+                    <!-- Logout -->
+                    <div class="menu-section">
+                        <button class="menu-item danger" onclick="logout()">
+                            <span class="menu-icon">🚪</span>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+
+                    <p class="menu-footer-text">Battle Prime © 2024. All rights reserved.<br>Free-entry tournaments, virtual points only.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="navigateTo('home')">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('tournaments')">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-label">Tournaments</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('matches')">
+                <span class="nav-icon">🎮</span>
+                <span class="nav-label">Matches</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('leaderboard')">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label">Leaderboard</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('profile')">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Profile</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
